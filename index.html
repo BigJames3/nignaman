@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nignaman Traoré — Ingénieur Logiciel & DevOps</title>
+<meta name="description" content="Nignaman Traoré — Responsable Informatique, Ingénieur Logiciel & DevOps à Abidjan. 9+ ans d’expérience : management IT, SAP, infrastructures, digitalisation industrielle, DevOps et cybersécurité.">
+<meta name="author" content="Traoré Nignaman N'Golo Dokporo">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Nignaman Traoré — Ingénieur Logiciel & DevOps">
+<meta property="og:description" content="9+ ans d'expérience · Administration système, DevOps, Full Stack, Cybersécurité · Abidjan & Remote">
+<meta name="theme-color" content="#080c10">
+<script>document.documentElement.classList.add('js');</script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -28,10 +35,16 @@
     color: var(--text);
     font-family: 'Syne', sans-serif;
     overflow-x: hidden;
-    cursor: none;
   }
 
-  /* CURSOR */
+  /* CURSOR — uniquement sur souris (pas sur mobile / tactile) */
+  .cursor, .cursor-ring { display: none; }
+
+  @media (hover: hover) and (pointer: fine) {
+    body, a, button { cursor: none; }
+    .cursor, .cursor-ring { display: block; }
+  }
+
   .cursor {
     width: 12px; height: 12px;
     background: var(--accent);
@@ -66,6 +79,11 @@
     opacity: 0.4;
   }
 
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
   /* NAV */
   nav {
     position: fixed;
@@ -78,6 +96,7 @@
     background: rgba(8,12,16,0.8);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(30,45,61,0.5);
+    transition: background 0.3s;
   }
 
   .nav-logo {
@@ -216,8 +235,9 @@
     margin-bottom: 2rem;
     animation: fadeInUp 0.8s 0.4s ease both;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem 1rem;
   }
 
   .hero-title span { color: var(--accent2); }
@@ -233,6 +253,7 @@
 
   .hero-cta {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     animation: fadeInUp 0.8s 0.8s ease both;
   }
@@ -247,7 +268,6 @@
     letter-spacing: 0.1em;
     text-decoration: none;
     border: none;
-    cursor: none;
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
@@ -268,6 +288,7 @@
   .btn-outline {
     padding: 0.9rem 2.5rem;
     border: 1px solid var(--border);
+    background: transparent;
     color: var(--text);
     font-family: 'Syne', sans-serif;
     font-weight: 600;
@@ -275,7 +296,6 @@
     letter-spacing: 0.1em;
     text-decoration: none;
     transition: all 0.3s;
-    cursor: none;
   }
 
   .btn-outline:hover {
@@ -427,6 +447,8 @@
     font-size: 1.05rem;
   }
 
+  .about-text strong { color: var(--text); font-weight: 600; }
+
   .tag-list {
     display: flex;
     flex-wrap: wrap;
@@ -462,7 +484,6 @@
     position: relative;
     overflow: hidden;
     transition: all 0.4s;
-    group: true;
   }
 
   .skill-card::after {
@@ -472,6 +493,7 @@
     background: linear-gradient(135deg, var(--glow), transparent);
     opacity: 0;
     transition: opacity 0.4s;
+    pointer-events: none;
   }
 
   .skill-card:hover {
@@ -591,6 +613,17 @@
     margin-bottom: 1.5rem;
   }
 
+  .timeline-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 1.5rem 0 0.75rem;
+  }
+
+  .timeline-sub span { color: var(--muted); text-transform: none; letter-spacing: 0.05em; }
+
   .timeline-list {
     list-style: none;
   }
@@ -709,7 +742,7 @@
     justify-content: center;
     min-height: 200px;
     position: relative;
-    overflow: hidden;
+    overflow: auto;
   }
 
   .project-visual .code-preview {
@@ -761,7 +794,16 @@
   .cert-icon { font-size: 1.5rem; }
   .cert-name { font-size: 1rem; font-weight: 700; }
   .cert-issuer { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); }
+  .cert-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
   .cert-year { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-top: auto; }
+
+  /* LANGUAGES */
+  .lang-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
 
   /* CONTACT */
   #contact {
@@ -770,7 +812,7 @@
   }
 
   .contact-wrapper {
-    max-width: 700px;
+    max-width: 760px;
     margin: 0 auto;
   }
 
@@ -795,7 +837,7 @@
   .contact-links {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
   }
 
@@ -805,12 +847,12 @@
     gap: 0.75rem;
     padding: 1rem 2rem;
     border: 1px solid var(--border);
+    background: transparent;
     color: var(--text);
     text-decoration: none;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
     transition: all 0.3s;
-    cursor: none;
   }
 
   .contact-link:hover {
@@ -863,36 +905,100 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .reveal {
+  /* Le contenu reste visible si JS est désactivé */
+  .js .reveal {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
 
-  .reveal.visible {
+  .js .reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .js .reveal { opacity: 1; transform: none; }
+  }
+
   /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .skills-grid, .cert-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 768px) {
-    nav { padding: 1.5rem 2rem; }
+    nav { padding: 1.25rem 1rem; }
     .nav-links { display: none; }
-    section { padding: 5rem 2rem; }
-    #hero { padding: 7rem 2rem 4rem; }
+    section { padding: 5rem 1rem; }
+    #hero { padding: 7rem 1rem 6rem; }
+    .hero-content { min-width: 0; width: 100%; }
+    .hero-name { font-size: clamp(2.5rem, 14vw, 3.5rem); }
+    .section-header { gap: 1rem; flex-wrap: wrap; }
+    .section-title { font-size: 1.9rem; overflow-wrap: anywhere; }
+    .section-line { display: none; }
+    .hero-cta { gap: 0.75rem; }
+    .hero-cta > * { flex: 1 1 100%; text-align: center; padding: 0.9rem 1rem; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-card { padding: 2rem 1.25rem; }
     .skills-grid { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
     .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
     .cert-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .timeline { padding-left: 1.5rem; }
+    .timeline-item { padding: 1.75rem 1.25rem; }
+    .timeline-item::before { left: -1.5rem; }
+    .contact-link { width: 100%; justify-content: center; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1rem; }
+  }
+
+  /* IMPRESSION / EXPORT PDF (Ctrl+P) */
+  @media print {
+    @page { margin: 14mm; }
+    :root {
+      --bg: #fff; --surface: #fff; --card: #fff; --border: #d0d7de;
+      --text: #111; --muted: #555; --accent: #0369a1; --accent2: #5b21b6; --accent3: #047857;
+    }
+    body { background: #fff; color: #111; font-size: 11pt; }
+    body::before, nav, .cursor, .cursor-ring, .scroll-indicator,
+    .hero-grid, .hero-glow, .hero-glow2, .hero-cta, .project-visual, .no-print { display: none !important; }
+    *, *::before, *::after { animation: none !important; transition: none !important; box-shadow: none !important; }
+    .js .reveal { opacity: 1 !important; transform: none !important; }
+    #hero { min-height: 0; padding: 0 0 1.5rem; }
+    .hero-name { font-size: 28pt; }
+    .hero-name br { display: none; }
+    section { padding: 1.25rem 0; }
+    .section-header { margin-bottom: 1rem; break-after: avoid; page-break-after: avoid; }
+    .skills-grid, .cert-grid, .timeline, .projects-grid { break-before: avoid; }
+    .section-title { font-size: 16pt; }
+    .about-text p, .hero-bio, .timeline-list li, .project-desc { color: #333; }
+    .about-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .about-visual { display: none; }
+    .skills-grid, .cert-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .skill-card, .cert-card, .project-card { padding: 0.9rem; }
+    .skill-icon { display: none; }
+    .projects-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+    .project-card.featured { grid-column: span 1; display: block; }
+    .timeline-item { padding: 1rem; margin-bottom: 0.75rem; }
+    .timeline-item, .skill-card, .cert-card, .project-card { break-inside: avoid; }
+    #contact { text-align: left; }
+    .contact-title { display: none; }
+    .contact-sub { margin-bottom: 0.5rem; }
+    .contact-links { justify-content: flex-start; gap: 0.5rem; }
+    .contact-link { padding: 0.25rem 0.75rem; }
+    footer { padding: 0.5rem 0; }
+    .footer-status { display: none; }
   }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
 <!-- NAV -->
 <nav>
@@ -902,10 +1008,12 @@
     <li><a href="#skills">Compétences</a></li>
     <li><a href="#experience">Expérience</a></li>
     <li><a href="#projects">Projets</a></li>
+    <li><a href="#certifications">Formation</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
+<main>
 <!-- HERO -->
 <section id="hero">
   <div class="hero-grid"></div>
@@ -913,26 +1021,28 @@
   <div class="hero-glow2"></div>
 
   <div class="hero-content">
-    <div class="hero-tag">Disponible · Abidjan, CI</div>
+    <div class="hero-tag">Responsable IT · Abidjan, Côte d’Ivoire</div>
     <h1 class="hero-name">
       Nignaman<br>
       <span class="accent">Traoré</span>
     </h1>
     <p class="hero-title">
-      Ingénieur Logiciel &nbsp;/&nbsp; <span>DevOps</span> &nbsp;/&nbsp; Administrateur Système
+      Responsable IT &nbsp;/&nbsp; Chef de projet SAP &nbsp;/&nbsp; <span>Transformation digitale</span>
     </p>
     <p class="hero-bio">
-      Passionné par l'automatisation, l'intégration continue et l'administration des systèmes. 
-      Je conçois des solutions fiables, évolutives et sécurisées dans des environnements Agile, 
-      de la ligne de code au pipeline CI/CD en production.
+      Responsable informatique et chef de projet IT, spécialisé dans le pilotage du SI, les projets ERP,
+      la digitalisation des opérations industrielles, les infrastructures multi-sites et la cybersécurité.
+      J’associe vision opérationnelle, coordination métier et expertise technique pour fiabiliser les systèmes
+      et accompagner la transformation numérique.
     </p>
     <div class="hero-cta">
       <a href="#experience" class="btn-primary">Voir mon parcours</a>
       <a href="#contact" class="btn-outline">Me contacter</a>
+      <button type="button" class="btn-outline" onclick="window.print()">Télécharger le CV (PDF)</button>
     </div>
   </div>
 
-  <div class="scroll-indicator">
+  <div class="scroll-indicator" aria-hidden="true">
     <span class="scroll-text">SCROLL</span>
     <div class="scroll-line"></div>
   </div>
@@ -952,49 +1062,51 @@
         <p style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--muted);margin-bottom:1.5rem;">// profile.json</p>
         <p style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--text);line-height:1.9;">
           <span style="color:var(--accent2)">"name"</span>: <span style="color:var(--accent3)">"Traoré Nignaman N'Golo"</span>,<br>
-          <span style="color:var(--accent2)">"role"</span>: <span style="color:var(--accent3)">"IT Manager & Software Engineer"</span>,<br>
+          <span style="color:var(--accent2)">"role"</span>: <span style="color:var(--accent3)">"Responsable IT / Chef de projet SAP"</span>,<br>
           <span style="color:var(--accent2)">"location"</span>: <span style="color:var(--accent3)">"Abidjan, Cocody 🇨🇮"</span>,<br>
-          <span style="color:var(--accent2)">"experience"</span>: <span style="color:var(--accent)">"7+ ans"</span>,<br>
+          <span style="color:var(--accent2)">"experience"</span>: <span style="color:var(--accent)">"9+ ans"</span>,<br>
           <span style="color:var(--accent2)">"focus"</span>: [<br>
           &nbsp;&nbsp;<span style="color:var(--accent3)">"DevOps"</span>,<br>
-          &nbsp;&nbsp;<span style="color:var(--accent3)">"Sécurité"</span>,<br>
+          &nbsp;&nbsp;<span style="color:var(--accent3)">"Cybersécurité défensive"</span>,<br>
           &nbsp;&nbsp;<span style="color:var(--accent3)">"Full Stack"</span><br>
           ]
         </p>
       </div>
       <div class="stats-grid">
         <div class="stat-item">
-          <span class="stat-number">7+</span>
+          <span class="stat-number">9+</span>
           <span class="stat-label">ANS D'EXP.</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">10+</span>
-          <span class="stat-label">PROJETS</span>
+          <span class="stat-label">PROJETS LIVRÉS</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">4+</span>
+          <span class="stat-label">ANS MANAGER IT</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">4</span>
-          <span class="stat-label">ENTREPRISES</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">2</span>
-          <span class="stat-label">CERTIFS</span>
+          <span class="stat-label">DIPLÔMES &amp; CERTIFS</span>
         </div>
       </div>
     </div>
 
     <div class="about-text reveal">
       <p>
-        Administrateur système et Ingénieur Logiciel expérimenté dans la gestion d'infrastructures IT complexes. 
-        Depuis plus de 7 ans, je conçois, déploie et sécurise des systèmes critiques pour des entreprises ivoiriennes.
+        <strong>Responsable IT chez Foods’Co depuis le 10 mai 2026</strong>, je contribue au pilotage du système d’information et à la transformation digitale : projet SAP S/4HANA Cloud Public, digitalisation de la production avec MES/MADATA, infrastructure réseau multi-sites, supervision, vidéosurveillance et cybersécurité.
       </p>
       <p>
-        Mon expertise couvre l'administration Linux/Windows Server, la sécurité informatique, le développement logiciel 
-        full stack (ASP.NET, React, Odoo) et la mise en œuvre de pipelines DevOps sur Azure. Je m'épanouis 
-        dans des environnements techniques exigeants où automatisation et fiabilité sont des impératifs.
+        Auparavant Responsable Informatique chez SAPRESSI CI, j’ai assuré l’administration d’Odoo 15 sur VPS,
+        la sécurisation des serveurs, les sauvegardes PostgreSQL, la supervision Zabbix et le support N2/N3
+        pour plusieurs entités. Mon expérience antérieure en développement applicatif et Azure DevOps me permet
+        de faire le lien entre les besoins métiers, les équipes techniques et les prestataires.
       </p>
       <p>
-        Titulaire d'un Mastère en Visual Analytics & Big Data et certifié Enterprise Defense Administrator, 
-        je combine expertise technique et vision stratégique pour piloter des projets IT d'envergure.
+        Titulaire d’un Mastère en Visual Analytics &amp; Big Data et certifié
+        <strong>eEDA — Enterprise Defense Administrator</strong> (INE Security), je privilégie une approche
+        structurée : gouvernance, gestion des risques, continuité de service, documentation et accompagnement
+        des utilisateurs.
       </p>
       <div class="tag-list">
         <span class="tag">Linux / Windows Server</span>
@@ -1025,27 +1137,29 @@
       <div class="skill-title">Administration Système</div>
       <div class="skill-items">
         <span class="skill-item">Windows Server</span>
+        <span class="skill-item">Active Directory</span>
         <span class="skill-item">Linux Ubuntu</span>
         <span class="skill-item">Linux SUSE</span>
         <span class="skill-item">Kali Linux</span>
-        <span class="skill-item">Active Directory</span>
         <span class="skill-item">VMware</span>
+        <span class="skill-item">VPS Cloud</span>
         <span class="skill-item">Zabbix</span>
+        <span class="skill-item">Sauvegarde &amp; PRA</span>
       </div>
     </div>
 
     <div class="skill-card reveal">
       <span class="skill-icon">🚀</span>
       <div class="skill-category">Automatisation</div>
-      <div class="skill-title">DevOps & Cloud</div>
+      <div class="skill-title">DevOps &amp; Cloud</div>
       <div class="skill-items">
         <span class="skill-item">Azure DevOps</span>
-        <span class="skill-item">Docker</span>
-        <span class="skill-item">CI/CD Pipelines</span>
-        <span class="skill-item">GitHub</span>
-        <span class="skill-item">YAML</span>
-        <span class="skill-item">Bash / PowerShell</span>
+        <span class="skill-item">Azure Pipelines (YAML)</span>
         <span class="skill-item">Microsoft Azure</span>
+        <span class="skill-item">Docker</span>
+        <span class="skill-item">Git / GitHub</span>
+        <span class="skill-item">Bash</span>
+        <span class="skill-item">PowerShell</span>
       </div>
     </div>
 
@@ -1054,7 +1168,7 @@
       <div class="skill-category">Développement</div>
       <div class="skill-title">Full Stack</div>
       <div class="skill-items">
-        <span class="skill-item">C# / ASP.NET</span>
+        <span class="skill-item">C# / ASP.NET / .NET</span>
         <span class="skill-item">React</span>
         <span class="skill-item">JavaScript</span>
         <span class="skill-item">Python</span>
@@ -1067,14 +1181,15 @@
     <div class="skill-card reveal">
       <span class="skill-icon">🗄️</span>
       <div class="skill-category">Données</div>
-      <div class="skill-title">BDD & Reporting</div>
+      <div class="skill-title">BDD, ERP &amp; Reporting</div>
       <div class="skill-items">
         <span class="skill-item">PostgreSQL</span>
         <span class="skill-item">SQL Server</span>
         <span class="skill-item">MySQL</span>
-        <span class="skill-item">Power BI</span>
         <span class="skill-item">PL/SQL</span>
+        <span class="skill-item">Power BI</span>
         <span class="skill-item">Odoo 15</span>
+        <span class="skill-item">Data Visualisation</span>
       </div>
     </div>
 
@@ -1083,26 +1198,28 @@
       <div class="skill-category">Protection</div>
       <div class="skill-title">Cybersécurité</div>
       <div class="skill-items">
+        <span class="skill-item">Durcissement Linux / SSH</span>
+        <span class="skill-item">UFW / Pare-feu</span>
+        <span class="skill-item">IAM &amp; gestion des accès</span>
         <span class="skill-item">OpenVAS</span>
         <span class="skill-item">Nessus</span>
-        <span class="skill-item">Burp Suite</span>
         <span class="skill-item">Nmap</span>
-        <span class="skill-item">UFW Firewall</span>
-        <span class="skill-item">IAM</span>
-        <span class="skill-item">SSH Hardening</span>
+        <span class="skill-item">Burp Suite</span>
       </div>
     </div>
 
     <div class="skill-card reveal">
       <span class="skill-icon">📐</span>
       <div class="skill-category">Organisation</div>
-      <div class="skill-title">Méthodes</div>
+      <div class="skill-title">Management &amp; Méthodes</div>
       <div class="skill-items">
+        <span class="skill-item">Pilotage SI</span>
         <span class="skill-item">Agile / Scrum</span>
         <span class="skill-item">Gestion de projet</span>
+        <span class="skill-item">Cahier des charges</span>
         <span class="skill-item">Documentation</span>
         <span class="skill-item">Support N2/N3</span>
-        <span class="skill-item">Formation</span>
+        <span class="skill-item">Formation utilisateurs</span>
       </div>
     </div>
   </div>
@@ -1118,42 +1235,56 @@
 
   <div class="timeline">
     <div class="timeline-item reveal">
-      <div class="timeline-date">Mars 2024 — Aujourd'hui</div>
-      <div class="timeline-role">Responsable Informatique</div>
-      <div class="timeline-company">SAPRESSI CI · Abidjan</div>
+      <div class="timeline-date">10 mai 2026 — Aujourd’hui</div>
+      <div class="timeline-role">Responsable IT / Chef de projet SAP</div>
+      <div class="timeline-company">FOODS’CO S.A. · Côte d’Ivoire</div>
       <ul class="timeline-list">
-        <li>Pilotage du déploiement et administration d'Odoo 15 sur VPS cloud (PostgreSQL, SSH, sauvegardes automatisées)</li>
-        <li>Mise en place de politiques de sécurité : pare-feu UFW, antivirus, gestion des accès, durcissement SSH</li>
-        <li>Supervision du système ERP et des bases de données via Zabbix (monitoring et alerting)</li>
-        <li>Développement et maintenance d'applications internes en C# / ASP.NET, React et Python</li>
-        <li>Automatisation de tâches IT avec scripts Bash et PowerShell</li>
+        <li>Pilotage technique interne du programme SAP S/4HANA Cloud Public avec l’intégrateur : coordination des ateliers, suivi des validations BBP, collecte des données de référence et suivi des actions métiers.</li>
+        <li>Coordination de la digitalisation industrielle avec MES/MADATA : suivi des équipements, capteurs, flux de données et besoins de production.</li>
+        <li>Contribution à l’évolution de l’infrastructure réseau des sites d’Abidjan et de Béoumi : segmentation VLAN, accès inter-sites, sécurisation et continuité des services.</li>
+        <li>Évaluation et préparation des solutions de sécurité réseau, de supervision et d’accès distant à la vidéosurveillance.</li>
+        <li>Suivi des risques SI, des incidents, des besoins utilisateurs, des prestataires et des actions de transformation numérique.</li>
       </ul>
       <div class="timeline-tags">
-        <span class="tl-tag">Odoo 15</span>
-        <span class="tl-tag">PostgreSQL</span>
-        <span class="tl-tag">Zabbix</span>
-        <span class="tl-tag">ASP.NET</span>
-        <span class="tl-tag">Linux</span>
-        <span class="tl-tag">Sécurité</span>
+        <span class="tl-tag">SAP S/4HANA Cloud Public</span>
+        <span class="tl-tag">MES / MADATA</span>
+        <span class="tl-tag">Gestion de projet</span>
+        <span class="tl-tag">Réseaux / VLAN</span>
+        <span class="tl-tag">Cybersécurité</span>
       </div>
     </div>
 
     <div class="timeline-item reveal">
-      <div class="timeline-date">Juillet 2022 — Mars 2024</div>
-      <div class="timeline-role">IT Manager · Administrateur Système & Dev</div>
+      <div class="timeline-date">Juil. 2022 — Avr. 2026</div>
+      <div class="timeline-role">Responsable Informatique</div>
       <div class="timeline-company">SAPRESSI CI · Abidjan</div>
+
+      <div class="timeline-sub">Responsable Informatique <span>· Mars 2024 — Avril 2026</span></div>
       <ul class="timeline-list">
-        <li>Gestion et administration des systèmes informatiques sous Windows Server et Linux</li>
-        <li>Implémentation d'Azure DevOps pour la gestion des versions et des rôles</li>
-        <li>Déploiement d'applications et gestion des pipelines CI/CD</li>
-        <li>Mise en place d'une application de gestion d'entreprise avec Odoo 15</li>
-        <li>Monitoring applicatif avec Zabbix, stratégie de sauvegarde et archivage</li>
+        <li>Pilotage du déploiement et de l'administration d'Odoo 15 sur VPS cloud (PostgreSQL, SSH, sauvegardes automatisées)</li>
+        <li>Définition et application de la politique de sécurité : pare-feu UFW, antivirus, gestion des accès, durcissement SSH</li>
+        <li>Supervision de l'ERP et des bases de données via Zabbix (monitoring et alerting)</li>
+        <li>Développement et maintenance d'applications internes en C# / ASP.NET, React et Python</li>
+        <li>Automatisation des tâches d'exploitation avec scripts Bash et PowerShell</li>
+      </ul>
+
+      <div class="timeline-sub">IT Manager · Administrateur Système &amp; Développeur <span>· Juil. 2022 — Mars 2024</span></div>
+      <ul class="timeline-list">
+        <li>Administration des systèmes sous Windows Server et Linux</li>
+        <li>Mise en place d'Azure DevOps pour la gestion des versions, des rôles et des pipelines CI/CD</li>
+        <li>Conception et lancement de l'application de gestion d'entreprise sur Odoo 15</li>
+        <li>Stratégie de sauvegarde et d'archivage, monitoring applicatif avec Zabbix</li>
       </ul>
       <div class="timeline-tags">
+        <span class="tl-tag">Odoo 15</span>
+        <span class="tl-tag">PostgreSQL</span>
         <span class="tl-tag">Azure DevOps</span>
         <span class="tl-tag">CI/CD</span>
-        <span class="tl-tag">C#</span>
+        <span class="tl-tag">Zabbix</span>
+        <span class="tl-tag">ASP.NET</span>
         <span class="tl-tag">Windows Server</span>
+        <span class="tl-tag">Linux</span>
+        <span class="tl-tag">Sécurité</span>
       </div>
     </div>
 
@@ -1162,10 +1293,10 @@
       <div class="timeline-role">Développeur Full Stack</div>
       <div class="timeline-company">NEK'S TECHNOLOGY · Abidjan</div>
       <ul class="timeline-list">
-        <li>Conception d'applications métier avec ASP.NET, JavaScript, SQL Server</li>
+        <li>Conception d'applications métier avec ASP.NET, JavaScript et SQL Server</li>
         <li>Intégration continue et suivi des versions via Azure DevOps</li>
         <li>Gestion de projets Agile/Scrum, revue de code, gestion des incidents</li>
-        <li>Projet phare : Application de gestion de flotte automobile pour UTB</li>
+        <li>Projet phare : application de gestion de flotte automobile pour UTB</li>
       </ul>
       <div class="timeline-tags">
         <span class="tl-tag">ASP.NET</span>
@@ -1180,9 +1311,9 @@
       <div class="timeline-role">Développeur Full Stack</div>
       <div class="timeline-company">SMACH DIGITAL · Abidjan</div>
       <ul class="timeline-list">
-        <li>Conception et maintenance de sites web et applications de gestion</li>
+        <li>Conception et maintenance de sites web et d'applications de gestion</li>
         <li>Intégration SEO/SEA, suivi des performances via Google Analytics</li>
-        <li>Projets : smachdigital.com, geobtp.ci, rarenouve.com, aipmci.com</li>
+        <li>Réalisations : smachdigital.com, geobtp.ci, rarenouve.com, aipmci.com</li>
       </ul>
       <div class="timeline-tags">
         <span class="tl-tag">PHP</span>
@@ -1198,8 +1329,8 @@
       <div class="timeline-company">Freelance · Abidjan</div>
       <ul class="timeline-list">
         <li>Conception et maintenance de sites web et e-commerce</li>
-        <li>Référencement SEA/SEO, gestion des hébergements</li>
-        <li>Rédaction des cahiers des charges</li>
+        <li>Référencement SEO/SEA, gestion des hébergements</li>
+        <li>Rédaction des cahiers des charges avec les clients</li>
       </ul>
       <div class="timeline-tags">
         <span class="tl-tag">PHP</span>
@@ -1220,15 +1351,33 @@
   </div>
 
   <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-number">01</div>
+      <div class="project-type">🏭 ERP · Transformation digitale</div>
+      <div class="project-name">Programme SAP &amp; digitalisation industrielle — Foods’Co</div>
+      <div class="project-desc">
+        Coordination technique interne du projet SAP S/4HANA Cloud Public avec l’intégrateur et les
+        responsables métiers : ateliers, suivi des BBP, préparation des données de référence et suivi
+        des actions. Contribution à la coordination MES/MADATA pour la digitalisation des opérations
+        de production et le suivi des équipements.
+      </div>
+      <div class="tag-list">
+        <span class="tag">SAP S/4HANA Cloud Public</span>
+        <span class="tag">MES / MADATA</span>
+        <span class="tag">Data migration</span>
+        <span class="tag">Coordination métier</span>
+      </div>
+    </div>
+
     <div class="project-card featured reveal">
       <div>
-        <div class="project-number">01</div>
-        <div class="project-type">🏗️ En cours · DevOps</div>
+        <div class="project-number">02</div>
+        <div class="project-type">🏗️ DevOps · CI/CD</div>
         <div class="project-name">Badgeuse Numérique CI/CD</div>
         <div class="project-desc">
-          Mise en place d'un pipeline CI/CD complet sur Azure DevOps pour automatiser le build et le déploiement 
-          d'une application de badgeuse numérique en C# / .NET. Connexion GitHub → Azure DevOps via YAML, 
-          gestion des erreurs de parallélisme et optimisation du workflow de livraison continue.
+          Pipeline CI/CD complet sur Azure DevOps automatisant le build et le déploiement
+          d'une application de badgeuse numérique en C# / .NET. Connexion GitHub → Azure DevOps via YAML,
+          résolution des limites de parallélisme et optimisation du workflow de livraison continue.
         </div>
         <div class="tag-list">
           <span class="tag">C# / .NET</span>
@@ -1238,7 +1387,7 @@
           <span class="tag">CI/CD</span>
         </div>
       </div>
-      <div class="project-visual">
+      <div class="project-visual" aria-hidden="true">
         <div class="code-preview">
           <span class="cm"># azure-pipelines.yml</span><br>
           <span class="kw">trigger</span>: [<span class="str">main</span>]<br><br>
@@ -1256,32 +1405,34 @@
     </div>
 
     <div class="project-card reveal">
-      <div class="project-number">02</div>
-      <div class="project-type">🚗 Logiciel Métier</div>
-      <div class="project-name">Gestion Flotte UTB</div>
-      <div class="project-desc">
-        Application web de gestion de flotte automobile pour UTB. Suivi des véhicules, maintenance, 
-        affectations. Déployée sur Azure avec intégration Azure DevOps.
-      </div>
-      <div class="tag-list">
-        <span class="tag">ASP.NET</span>
-        <span class="tag">Azure</span>
-        <span class="tag">SQL Server</span>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
       <div class="project-number">03</div>
       <div class="project-type">🏢 ERP</div>
       <div class="project-name">Déploiement Odoo 15 — SAPRESSI</div>
       <div class="project-desc">
-        Déploiement complet d'Odoo 15 sur VPS cloud, sécurisation SSH, automatisation des sauvegardes 
-        PostgreSQL, configuration pare-feu UFW et monitoring via Zabbix.
+        Déploiement complet d'Odoo 15 sur VPS cloud : sécurisation SSH, sauvegardes PostgreSQL
+        automatisées, pare-feu UFW et supervision Zabbix. Système de gestion utilisé au quotidien
+        par l'entreprise.
       </div>
       <div class="tag-list">
         <span class="tag">Odoo 15</span>
         <span class="tag">PostgreSQL</span>
         <span class="tag">Linux VPS</span>
+        <span class="tag">Zabbix</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-number">04</div>
+      <div class="project-type">🚗 Logiciel Métier</div>
+      <div class="project-name">Gestion de Flotte — UTB</div>
+      <div class="project-desc">
+        Application web de gestion de flotte automobile pour UTB : suivi des véhicules, maintenance
+        et affectations. Déployée sur Azure avec intégration continue Azure DevOps.
+      </div>
+      <div class="tag-list">
+        <span class="tag">ASP.NET</span>
+        <span class="tag">Azure</span>
+        <span class="tag">SQL Server</span>
       </div>
     </div>
   </div>
@@ -1292,7 +1443,7 @@
   <div class="section-header reveal">
     <span class="section-number">05 /</span>
     <div class="section-line"></div>
-    <h2 class="section-title">Formation & Certifications</h2>
+    <h2 class="section-title">Formation &amp; Certifications</h2>
   </div>
 
   <div class="cert-grid">
@@ -1300,31 +1451,31 @@
       <div class="cert-icon">🛡️</div>
       <div class="cert-name">eEDA — Enterprise Defense Administrator</div>
       <div class="cert-issuer">INE Security</div>
-      <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Cybersécurité défensive et ingénierie de sécurité. ID : 139209208</p>
+      <p class="cert-desc">Cybersécurité défensive et ingénierie de sécurité. ID : 139209208</p>
       <div class="cert-year">2025</div>
     </div>
 
     <div class="cert-card reveal">
       <div class="cert-icon">🔬</div>
       <div class="cert-name">eJPT — Junior Penetration Tester</div>
-      <div class="cert-issuer">eLearnSecurity</div>
-      <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Compétences en tests d'intrusion et évaluation des vulnérabilités</p>
-      <div class="cert-year">En cours</div>
+      <div class="cert-issuer">INE Security</div>
+      <p class="cert-desc">Tests d'intrusion et évaluation des vulnérabilités</p>
+      <div class="cert-year">En préparation</div>
     </div>
 
     <div class="cert-card reveal">
       <div class="cert-icon">☁️</div>
-      <div class="cert-name">Azure Pipelines & DevOps</div>
-      <div class="cert-issuer">Microsoft</div>
-      <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">CI/CD, stratégies de déploiement, pipelines de mise en production</p>
+      <div class="cert-name">Azure Pipelines &amp; DevOps</div>
+      <div class="cert-issuer">Microsoft · Formation</div>
+      <p class="cert-desc">CI/CD, stratégies de déploiement, pipelines de mise en production</p>
       <div class="cert-year">Oct. 2024</div>
     </div>
 
     <div class="cert-card reveal">
       <div class="cert-icon">📊</div>
-      <div class="cert-name">Mastère Visual Analytics & Big Data</div>
+      <div class="cert-name">Mastère Visual Analytics &amp; Big Data</div>
       <div class="cert-issuer">TECH Université Technologique</div>
-      <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Analyse de données, visualisation, Big Data</p>
+      <p class="cert-desc">Analyse de données, visualisation, Big Data</p>
       <div class="cert-year">2023 — 2024</div>
     </div>
 
@@ -1332,7 +1483,7 @@
       <div class="cert-icon">🎓</div>
       <div class="cert-name">Master 1 — ISI/CPI</div>
       <div class="cert-issuer">Institut CERCO CI</div>
-      <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Ingénierie des Systèmes d'Information & Conduite de Projet</p>
+      <p class="cert-desc">Ingénierie des Systèmes d'Information &amp; Conduite de Projet</p>
       <div class="cert-year">2019 — 2021</div>
     </div>
 
@@ -1340,7 +1491,7 @@
       <div class="cert-icon">💼</div>
       <div class="cert-name">Licence Pro — Génie Logiciel</div>
       <div class="cert-issuer">Institut CERCO CI</div>
-      <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Développement logiciel, architecture applicative</p>
+      <p class="cert-desc">Développement logiciel, architecture applicative</p>
       <div class="cert-year">2017 — 2019</div>
     </div>
   </div>
@@ -1352,7 +1503,7 @@
     <h2 class="contact-title">
       Travaillons<br><span class="accent">ensemble.</span>
     </h2>
-    <p class="contact-sub">Ouvert aux opportunités · Abidjan & Remote</p>
+    <p class="contact-sub">Contact professionnel · Abidjan, Côte d’Ivoire</p>
     <div class="contact-links">
       <a href="mailto:traorenignaman@outlook.fr" class="contact-link">
         ✉️ traorenignaman@outlook.fr
@@ -1360,80 +1511,101 @@
       <a href="tel:+2250758114167" class="contact-link">
         📞 +225 07 58 11 41 67
       </a>
+      <!-- À compléter : LinkedIn / GitHub
+      <a href="https://www.linkedin.com/in/VOTRE-PROFIL" class="contact-link" target="_blank" rel="noopener">in LinkedIn</a>
+      <a href="https://github.com/VOTRE-COMPTE" class="contact-link" target="_blank" rel="noopener">⌥ GitHub</a>
+      -->
     </div>
   </div>
 </section>
+</main>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-text">© 2025 Traoré Nignaman N'Golo Dokporo — Portfolio</div>
+  <div class="footer-text">© <span id="year">2026</span> Traoré Nignaman N'Golo Dokporo — Portfolio</div>
   <div class="footer-status">
     <div class="status-dot"></div>
-    Disponible pour de nouveaux projets
+    Profil professionnel · IT / SAP / Digital
   </div>
 </footer>
 
 <script>
-  // CUSTOM CURSOR
-  const cursor = document.getElementById('cursor');
-  const cursorRing = document.getElementById('cursorRing');
-  let mouseX = 0, mouseY = 0;
-  let ringX = 0, ringY = 0;
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
-  });
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
-    cursorRing.style.left = ringX + 'px';
-    cursorRing.style.top = ringY + 'px';
-    requestAnimationFrame(animateRing);
+  // CUSTOM CURSOR (souris uniquement)
+  if (finePointer && !reduceMotion) {
+    const cursor = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll('a, button, .skill-card, .project-card, .cert-card, .stat-item').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '20px';
+        cursor.style.height = '20px';
+        cursor.style.background = '#7c3aed';
+        cursorRing.style.width = '60px';
+        cursorRing.style.height = '60px';
+        cursorRing.style.borderColor = '#7c3aed';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '12px';
+        cursor.style.height = '12px';
+        cursor.style.background = 'var(--accent)';
+        cursorRing.style.width = '40px';
+        cursorRing.style.height = '40px';
+        cursorRing.style.borderColor = 'var(--accent)';
+      });
+    });
+  } else if (finePointer) {
+    // Mouvement réduit : on garde le curseur natif
+    document.querySelectorAll('.cursor, .cursor-ring').forEach(el => el.remove());
+    document.body.style.cursor = 'auto';
+    document.querySelectorAll('a, button').forEach(el => el.style.cursor = 'pointer');
   }
-  animateRing();
-
-  document.querySelectorAll('a, button, .skill-card, .project-card, .cert-card, .stat-item').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '20px';
-      cursor.style.height = '20px';
-      cursor.style.background = '#7c3aed';
-      cursorRing.style.width = '60px';
-      cursorRing.style.height = '60px';
-      cursorRing.style.borderColor = '#7c3aed';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '12px';
-      cursor.style.height = '12px';
-      cursor.style.background = 'var(--accent)';
-      cursorRing.style.width = '40px';
-      cursorRing.style.height = '40px';
-      cursorRing.style.borderColor = 'var(--accent)';
-    });
-  });
 
   // SCROLL REVEAL
   const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, 100);
-        observer.unobserve(entry.target);
-      }
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    reveals.forEach(el => el.classList.add('visible'));
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // STAGGERED REVEAL for grids
+    document.querySelectorAll('.skills-grid .skill-card, .projects-grid .project-card, .cert-grid .cert-card').forEach((el, i) => {
+      el.style.transitionDelay = ((i % 3) * 0.1) + 's';
     });
-  }, { threshold: 0.1 });
+  }
 
-  reveals.forEach(el => observer.observe(el));
-
-  // STAGGERED REVEAL for grids
-  document.querySelectorAll('.skills-grid .skill-card, .projects-grid .project-card, .cert-grid .cert-card').forEach((el, i) => {
-    el.style.transitionDelay = (i * 0.1) + 's';
-  });
+  // Avant impression : tout afficher
+  window.addEventListener('beforeprint', () => reveals.forEach(el => el.classList.add('visible')));
 
   // COUNTER ANIMATION
   function animateCounter(el, target) {
@@ -1449,33 +1621,28 @@
     }, 40);
   }
 
-  const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const nums = entry.target.querySelectorAll('.stat-number');
-        nums.forEach(n => {
-          const val = parseInt(n.textContent);
-          const suffix = n.textContent.replace(/[0-9]/g, '');
-          n.dataset.suffix = suffix;
-          animateCounter(n, val);
-        });
-        statObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
   const statsGrid = document.querySelector('.stats-grid');
-  if (statsGrid) statObserver.observe(statsGrid);
+  if (statsGrid && !reduceMotion && 'IntersectionObserver' in window) {
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.stat-number').forEach(n => {
+            const val = parseInt(n.textContent);
+            n.dataset.suffix = n.textContent.replace(/[0-9]/g, '');
+            animateCounter(n, val);
+          });
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    statObserver.observe(statsGrid);
+  }
 
-  // NAV active
+  // NAV background on scroll
+  const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-      nav.style.background = 'rgba(8,12,16,0.95)';
-    } else {
-      nav.style.background = 'rgba(8,12,16,0.8)';
-    }
-  });
+    nav.style.background = window.scrollY > 50 ? 'rgba(8,12,16,0.95)' : 'rgba(8,12,16,0.8)';
+  }, { passive: true });
 </script>
 </body>
 </html>
